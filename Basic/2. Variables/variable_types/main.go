@@ -1,0 +1,16 @@
+package main
+
+import "fmt"
+
+func main() {
+	name := "Banana Flat"
+	var price float32 = 3.99
+	ready := true
+	count := 5
+
+	fmt.Printf("Type of name is: %T\n", name)
+	fmt.Printf("Type of name is: %T\n", price)
+	fmt.Printf("Type of name is: %T\n", ready)
+	fmt.Printf("Type of name is: %T\n", count)
+
+}
