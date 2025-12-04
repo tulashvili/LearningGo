@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func getSmallestNum(nums [4]int) int {
+func getSmallestNum(nums []int) int {
 	minVal := nums[0]
 	var iteration int
 
@@ -17,6 +17,12 @@ func getSmallestNum(nums [4]int) int {
 }
 
 func main() {
-	nums := [4]int{4, 5, 6, 7}
-	fmt.Println(getSmallestNum(nums))
+	// declare len slice
+	var number = 4
+	array := make([]int, number)
+
+	for i := 0; i < number; i++ {
+		fmt.Scan(&array[i])
+	}
+	fmt.Println(getSmallestNum([]int(array)))
 }
