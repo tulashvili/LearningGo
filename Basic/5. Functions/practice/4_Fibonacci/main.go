@@ -2,31 +2,24 @@ package main
 
 import "fmt"
 
-func main() {
-	var iteration int
-	var previousVal_1 = 1
-	var previousVal_2 = 1
-	var nextValue int
+func getFibonacci(n int) int {
+	if n == 1 || n == 2 {
+		return 1
+	} else {
+		previousVal1 := 1
+		previousVal2 := 1
+		var nextValue int
 
-	for i := 0; i < 4; i++ {
-		iteration++
-		fmt.Println("iteration #", iteration)
+		for i := 3; i <= n; i++ {
+			nextValue = previousVal1 + previousVal2
+			previousVal1 = previousVal2
+			previousVal2 = nextValue
+		}
 
-		nextValue = previousVal_1 + previousVal_2
-		previousVal_1 = previousVal_2
-		previousVal_2 = nextValue
-
-		fmt.Println("next value:", nextValue)
-
-		fmt.Println()
+		return nextValue
 	}
 }
 
-// func fibonacci(n int) int {
-// 	n = 1
-// 	var g int
-// 	for i := 0; i < 10; i++ {
-// 		g += n
-// 	}
-// 	return g
-// }
+func main() {
+	fmt.Println(getFibonacci(4))
+}
