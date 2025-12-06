@@ -2,15 +2,15 @@ package main
 
 import "fmt"
 
-func sumInt(a ...interface{}) {
+func sumInt(array ...interface{}) (a int, b int) {
 
 	var sum int
 	var count int
 
-	for _, elem := range a {
+	for _, elem := range array {
 		num, ok := elem.(int)
 
-		if ok {
+		if ok { // check, that elem is int
 			sum += num
 			count++
 		} else {
@@ -18,15 +18,10 @@ func sumInt(a ...interface{}) {
 		}
 
 	}
-	fmt.Println(count, sum)
+	return count, sum
 }
 func main() {
-	var firstNum int
-	var secondNum int
-
-	fmt.Scan(&firstNum)
-	fmt.Scan(&secondNum)
-
-	sumInt(firstNum, "hello", secondNum)
+	a, b := sumInt(1, 0)
+	fmt.Printf("%d, %d\n", a, b)
 
 }
