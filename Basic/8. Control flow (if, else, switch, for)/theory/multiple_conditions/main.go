@@ -16,18 +16,18 @@ func main() {
 	fmt.Println("Print order amount (float 64)")
 	fmt.Scan(&orderAmount)
 
-	// RECOMEND, MÆN!
+	// RECOMEND!
 	if hour >= 15 && hour <= 17 && isMember && orderAmount > 10 {
-		fmt.Println("Get your free americano, bitch!")
+		fmt.Println("Get your free americano!")
 	} else {
-		fmt.Println("Poduy v pisiy, Borisov Borya")
+		fmt.Println("We don't get americano to you")
 	}
-	// NOT RECOMENDED, SUCHKA!
+	// NOT RECOMENDED!
 	if hour >= 15 {
 		if hour <= 17 {
 			if isMember {
 				if orderAmount > 10 {
-					fmt.Println("Get your free americano, bitch!")
+					fmt.Println("Get your free americano!")
 				}
 			}
 		}

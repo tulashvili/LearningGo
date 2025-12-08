@@ -18,6 +18,6 @@ func main() {
 	} else if points >= 60 {
 		fmt.Printf("You are %s member\n", members[2])
 	} else {
-		fmt.Println("Huy znaet, you are bobrovnikov :)")
+		fmt.Println("Who are you?")
 	}
 }
