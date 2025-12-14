@@ -24,12 +24,27 @@ func (u User) GoodBye() {
 	fmt.Println("My rating was:", u.Rating)
 	fmt.Println()
 }
+
+// add validation, that rating have expected value
+func (u User) UpRating(rating float64) {
+	if u.Rating+rating <= 10.0 {
+		u.Rating += rating
+		fmt.Println("I added rating value")
+	} else {
+		fmt.Println("It doesn't pass validation")
+	}
+}
 func main() {
 	user := User{
 		Name:   "Omar",
 		Age:    26,
-		Rating: 20.7,
+		Rating: 4.7,
 	}
 	user.GoodBye()
 	user.Greeting()
+
+	fmt.Println("Rating before UP:", user.Rating)
+	user.UpRating(3)
+	fmt.Println("Rating after UP:", user.Rating)
+
 }
