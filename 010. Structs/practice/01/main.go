@@ -12,45 +12,45 @@ type Action struct {
 	Power int
 }
 
-// Выстрел можно делать только при наличии Ammo
+// Оба метода срабатывают при условии, что action.On = True
+
 func (a *Action) Shoot() bool {
-	if a.Ammo > 0 && a.On {
+	if a.On != true {
+		fmt.Println("a.On = false, shoot false")
+	} else if a.Ammo > 0 {
 		a.Ammo--
-		fmt.Println("Shoot done")
-		fmt.Println("ammunition left:", a.Ammo)
+		fmt.Println("Shoot true")
 	} else {
-		fmt.Println("Shoot doesn't do.")
+		fmt.Println("Shoot false")
 		fmt.Println("Ammo:", a.Ammo)
-		fmt.Println("On:", a.On)
-		a.On = false
+
 	}
 	fmt.Println()
 	return a.On
 }
 
 func (a *Action) RideBike() bool {
-	if a.Power > 0 && a.On {
+	if a.On != true {
+		fmt.Println("a.On = false, RideBike false")
+	} else if a.Power > 0 {
 		a.Power--
-		fmt.Println("you got on a motorcycle")
-		fmt.Println("power left:", a.Power)
+		fmt.Println("RideBike true")
 	} else {
-		fmt.Println("You can't got on a motorcycle")
-		fmt.Println("Ammo:", a.Power)
-		fmt.Println("On:", a.On)
+		fmt.Println("RideBike false")
+		fmt.Println("Power:", a.Power)
 	}
 	fmt.Println()
 	return a.On
 }
+
 func main() {
 	action := Action{
-		On:    false,
-		Ammo:  2,
-		Power: 10,
+		On:    true,
+		Ammo:  0,
+		Power: 2,
 	}
 
 	testStruct := &action
-	action.Shoot()
-	action.RideBike()
-	fmt.Println(testStruct)
-
+	testStruct.Shoot()
+	testStruct.RideBike()
 }
