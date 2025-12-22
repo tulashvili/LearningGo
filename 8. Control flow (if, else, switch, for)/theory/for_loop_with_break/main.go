@@ -11,12 +11,12 @@ func main() {
 		fmt.Scanln(&person)
 
 		if person == "bye" {
-			fmt.Println("Nu i nahyu ti pripersya to our club?")
+			fmt.Println("What do you doing there?")
 			break
 		}
 
 		if person == "" {
-			fmt.Println("I need your inviter name, suchka!")
+			fmt.Println("I need your inviter name!")
 			continue
 		}
 
