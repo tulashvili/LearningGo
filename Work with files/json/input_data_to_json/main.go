@@ -26,4 +26,15 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	user.Name = "Jack"
+	data, err = json.Marshal(user)
+	if err != nil {
+		panic(err)
+	}
+
+	err = os.WriteFile("user_out.json", data, 0644)
+	if err != nil {
+		panic(err)
+	}
 }
