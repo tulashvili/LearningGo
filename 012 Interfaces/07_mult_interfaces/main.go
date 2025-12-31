@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-type PaymentMethod interface {
+type PaymnentMethod interface {
 	Pay(amount float64) string
 }
 
@@ -17,11 +17,10 @@ type GiftCard struct {
 
 func (g GiftCard) Pay(amount float64) string {
 	if amount > g.Balance {
-		// if true, вернется этот return
-		return "Not enough balance!"
+		return "Not enough balance"
 	}
-	// if amount > g.Balance false, вернется этот return
 	return fmt.Sprintf("Paid $%.2f using gift card", amount)
+
 }
 
 func (g GiftCard) CardInfo() string {
@@ -30,12 +29,14 @@ func (g GiftCard) CardInfo() string {
 
 func main() {
 	card := GiftCard{
+		Code:    "GC00001",
 		Balance: 125.0,
-		Code:    "GC0001",
 	}
-	var pay PaymentMethod = card
+
+	var pay PaymnentMethod = card
 	var info CardInfoProvider = card
 
+	fmt.Println(pay.Pay(35.50))
 	fmt.Println(info.CardInfo())
-	fmt.Println(pay.Pay(235.50))
+
 }
