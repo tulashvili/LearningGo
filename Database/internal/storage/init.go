@@ -18,15 +18,12 @@ func CreateTable(conn *sql.DB) error {
 		day TEXT NOT NULL,
 		category TEXT NOT NULL,
 		question TEXT NOT NULL,
-		scale INTEGER NOT NULL
+		scale INTEGER NOT NULL,
+
+		UNIQUE (day)
 	);
 	`
 	_, err := conn.Exec(query)
 
 	return err
 }
-
-// func (s *Storage) SaveEntry(
-// 	day, category, question string,
-// 	scale int,
-// ) error

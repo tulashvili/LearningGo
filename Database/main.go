@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"test_work_db/internal/storage"
 )
@@ -13,16 +12,29 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Подключение к базе установлено успешно")
 
 	if err := storage.CreateTable(db); err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Таблица в базе данных была создана успешно")
 
-	if err := storage.InsertRows(db); err != nil {
+	// if err := storage.InsertRows(
+	// 	db,
+	// 	time.Now(),
+	// 	"Psy",
+	// 	"Как твое психологическое состояние?",
+	// 	4,
+	// ); err != nil {
+	// 	log.Fatal(err)
+	// }
+	// fmt.Println("Данные добавлены успешно в таблицу daily_log")
+
+	// if err := storage.UpdateRows(db); err != nil {
+	// 	log.Fatal(err)
+	// }
+	// fmt.Println("Данные обновлены в таблице daily_log")
+
+	if err := storage.DeleteRow(db); err != nil {
 		log.Fatal(err)
 	}
-	fmt.Println("Данные добавлены успешно в таблицу daily_log")
 
 }
