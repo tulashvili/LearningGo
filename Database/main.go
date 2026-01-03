@@ -33,7 +33,11 @@ func main() {
 	// }
 	// fmt.Println("Данные обновлены в таблице daily_log")
 
-	if err := storage.DeleteRow(db); err != nil {
+	// if err := storage.DeleteRow(db); err != nil {
+	// 	log.Fatal(err)
+	// }
+
+	if err := storage.SelectRow(db); err != nil {
 		log.Fatal(err)
 	}
 
