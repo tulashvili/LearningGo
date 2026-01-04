@@ -2,22 +2,19 @@ package storage
 
 import (
 	"database/sql"
-	"time"
+	"test_work_db/internal/model"
 )
 
 func InsertRows(
 	conn *sql.DB,
-	day time.Time,
-	category string,
-	question string,
-	scale int,
+	e model.Entry,
 ) error {
 	query := `
 	INSERT INTO daily_log (day, category, question, scale)
 	VALUES ($1, $2, $3, $4)
 	;
 	`
-	_, err := conn.Exec(query, day, category, question, scale)
+	_, err := conn.Exec(query, e.Day, e.Category, e.Question, e.Scale)
 
 	return err
 }

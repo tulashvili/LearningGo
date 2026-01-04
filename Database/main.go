@@ -3,6 +3,8 @@ package main
 import (
 	"log"
 	"test_work_db/internal/storage"
+
+	"github.com/k0kubun/pp"
 )
 
 func main() {
@@ -37,8 +39,11 @@ func main() {
 	// 	log.Fatal(err)
 	// }
 
-	if err := storage.SelectRow(db); err != nil {
+	entry, err := storage.SelectRow(db)
+	if err != nil {
 		log.Fatal(err)
 	}
+
+	pp.Println(entry)
 
 }

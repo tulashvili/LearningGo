@@ -3,9 +3,10 @@ package storage
 import (
 	"database/sql"
 	"fmt"
+	"test_work_db/internal/model"
 )
 
-func SelectRow(conn *sql.DB) error {
+func SelectRow(conn *sql.DB) ([]model.Entry, error) {
 	// WHERE category = "Psy" change value all items with Psy
 	query := `
 	SELECT * FROM daily_log 
@@ -16,42 +17,34 @@ func SelectRow(conn *sql.DB) error {
 	`
 	res, err := conn.Query(query)
 
-	// defer res.Close()
+	defer res.Close()
+
+	currentDay := make([]model.Entry, 0)
 
 	for res.Next() {
-		var id int
-		var day string // because in sqlite it's TEXT type
-		var category string
-		var question string
-		var scale int
+		var entry model.Entry
 
 		err := res.Scan(
-			&id,
-			&day,
-			&category,
-			&question,
-			&scale,
+			&entry.ID,
+			&entry.Day,
+			&entry.Category,
+			&entry.Question,
+			&entry.Scale,
 		)
 		if err != nil {
-			return err
+			return nil, err
 		}
-
-		formatedPrintRows(id, day, category, question, scale)
+		currentDay = append(currentDay, entry)
+		formatedPrintRows(entry)
 	}
-	return err
+	return currentDay, err
 }
 
-func formatedPrintRows(
-	id int,
-	day string,
-	category string,
-	question string,
-	scale int,
-) {
+func formatedPrintRows(currentDay model.Entry) {
 	fmt.Println("---------------------")
-	fmt.Println("id:", id)
-	fmt.Println("day:", day)
-	fmt.Println("category:", category)
-	fmt.Println("question:", question)
-	fmt.Println("scale:", scale)
+	fmt.Println("id:", currentDay.ID)
+	fmt.Println("day:", currentDay.Day)
+	fmt.Println("category:", currentDay.Category)
+	fmt.Println("question:", currentDay.Question)
+	fmt.Println("scale:", currentDay.Scale)
 }
